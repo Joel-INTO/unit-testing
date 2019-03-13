@@ -19,7 +19,7 @@ describe('HeroesComponent', () => {
     });
 
     describe('delete', () => {
-        it('should remove the indicated hero from the heroes list', () => {
+        xit('should remove the indicated hero from the heroes list', () => {
             mockHeroService.deleteHero.and.returnValue(of(true));
             component.heroes = HEROES;
             const hero = HEROES[2];
@@ -27,6 +27,16 @@ describe('HeroesComponent', () => {
             component.delete(hero);
 
             expect(component.heroes.includes(hero)).toBe(false);
+        });
+
+        xit('should call deletehero', () => {
+            mockHeroService.deleteHero.and.returnValue(of(true));
+            component.heroes = HEROES;
+            const hero = HEROES[2];
+
+            component.delete(hero);
+
+            expect(mockHeroService.deleteHero).toHaveBeenCalled();
         });
     });
 });
