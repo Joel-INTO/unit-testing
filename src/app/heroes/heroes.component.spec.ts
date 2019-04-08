@@ -19,7 +19,7 @@ describe('HeroesComponent', () => {
     });
 
     describe('delete', () => {
-        xit('should remove the indicated hero from the heroes list', () => {
+        it('should remove the indicated hero from the heroes list', () => {
             mockHeroService.deleteHero.and.returnValue(of(true));
             component.heroes = HEROES;
             const hero = HEROES[2];
@@ -29,7 +29,7 @@ describe('HeroesComponent', () => {
             expect(component.heroes.includes(hero)).toBe(false);
         });
 
-        xit('should call deletehero', () => {
+        it('should call deletehero', () => {
             mockHeroService.deleteHero.and.returnValue(of(true));
             component.heroes = HEROES;
             const hero = HEROES[2];
