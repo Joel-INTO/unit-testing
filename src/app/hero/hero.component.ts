@@ -6,6 +6,7 @@ import { Hero } from '../hero';
   templateUrl: './hero.component.html',
   styleUrls:  ['./hero.component.css']
 })
+
 export class HeroComponent {
   @Input() hero: Hero;
   @Output() delete = new EventEmitter();
