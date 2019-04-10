@@ -34,31 +34,39 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
-    // Declare debounce function
-    const debounce = (func, wait, immediate) => {
-      let timeout;
-      return function() {
-        const context = this;
-        const args = arguments;
-        const later = () => {
-          timeout = null;
-          if (!immediate) {
-            func.apply(context, args);
-          }
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) {
-          func.apply(context, args);
-        }
-      };
-    };
+    // // Save, by calling debounce
+    // debounce(() => {
+    //   this.heroService.updateHero(this.hero)
+    //     .subscribe(() => this.goBack());
+    // }, 250, false)();
 
-    // Save, by calling debounce
-    debounce(() => {
+    const p = new Promise((resolve) => {
       this.heroService.updateHero(this.hero)
-        .subscribe(() => this.goBack());
-    }, 250, false)();
+      .subscribe(() => this.goBack());
+
+      resolve();
+    });
   }
 }
+
+// Declare debounce function
+const debounce = (func, wait, immediate) => {
+  let timeout;
+  return function() {
+    const context = this;
+    const args = arguments;
+    const later = () => {
+      timeout = null;
+      if (!immediate) {
+        func.apply(context, args);
+      }
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) {
+      func.apply(context, args);
+    }
+  };
+};
+
