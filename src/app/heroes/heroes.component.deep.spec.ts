@@ -2,10 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroesComponent } from './heroes.component';
 import { HeroService } from '../hero.service';
 import { HeroComponent } from '../hero/hero.component';
-import { NO_ERRORS_SCHEMA, Directive, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { RouterLink } from '@angular/router';
 
 @Directive({
     selector: '[routerLink]',
