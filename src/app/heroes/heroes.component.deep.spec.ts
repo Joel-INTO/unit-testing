@@ -85,7 +85,8 @@ describe('HeroesComponent (Deep tests)', () => {
                 stopPropagation: () => { }
             };
             const heroComponents = fixture.debugElement.queryAll(By.directive(HeroComponent));
-            heroComponents[0].query(By.css('button')).triggerEventHandler('click', mockMethods);
+            // heroComponents[0].query(By.css('button')).triggerEventHandler('click', mockMethods);
+            heroComponents[0].triggerEventHandler('delete', null);
 
             // ASSERT
             expect(fixture.componentInstance.delete).toHaveBeenCalledWith(HEROES[0]);
